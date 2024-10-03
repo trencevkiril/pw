@@ -1,0 +1,46 @@
+{
+  "home": "Home",
+  "events": "Events",
+  "gallery": "Gallery",
+  "contact": "Contact",
+  "about-us": "About us",
+
+  "home-heading": "Unleash Your Creativity",
+  "home-sub-heading": "Join us for an evening where vibrant colors meet vintage wines, and every stroke is a celebration of your inner artist. Whether you're a seasoned painter or a curious beginner, our Paint and Wine nights are the perfect blend of inspiration and relaxation.",
+  "explore-events": "Explore Events",
+  "events-heading": "Events",
+  "events-sub-heading": "Join our upcoming events!",
+  "gallery-heading": "Gallery",
+  "gallery-sub-heading": "Explore our gallery!",
+  "contact-heading": "Get in Touch",
+  "contact-sub-heading": "We'd love to hear from you.",
+  "about-heading": "About Us",
+  "about-sub-heading": "Learn more about our mission.",
+  "picture-section-header": "Paint & Wine is an excellent way to spend a fantastic evening with friends or simply socialize and meet new people!",
+
+  "paragraph1": "With a canvas, acrylic paints, and the enjoyment of a glass of fine wine, anyone can create their masterpiece. Our Paint & Wine event is ideal for everyone looking for creative relaxation and fun.",
+  "paragraph2": "No painting experience is required to participate – all you need to bring is a smile and positive energy!",
+  "paragraph3": "Reserve your spot today and experience a unique evening filled with art and good wine.",
+  "paragraph4": "At our Paint & Wine events, customers have a blast unleashing their creativity while enjoying a glass of wine. Guided by our instructors, they paint, laugh, and socialize, creating beautiful memories and artwork. It's the perfect way to relax, have fun, and enjoy a unique experience with friends.",
+  "event-header": "PAINT WITH US",
+  "date-label": "Date",
+  "city-label": "City",
+  "status-label": "Status",
+  "price-label": "Price",
+  "booked-status": "Booked",
+  "free-status": "Free",
+  "reserve": "RESERVE",
+  "time": "Time",
+
+
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+
+  "reserve-seat": "Reserve your seat!",
+  "available-seats": "AVAILABLE SEATS: "
+}

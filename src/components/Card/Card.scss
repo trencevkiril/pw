@@ -1,0 +1,36 @@
+@import "../../styles/_mixins.scss";
+
+.container {
+    margin-top: 10px;
+}
+
+.card-title {
+    margin-bottom: 20px;
+
+    @include mq("tablet-wide", min) {
+        font-size: 24px;
+    }
+}
+
+.button {
+    margin: 0px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; 
+    width: 100%;
+}
+
+.seats-text {
+    padding-top: 10px;
+    @include flex(row, flex-end, flex-end);
+
+    @include mq("tablet-wide", min) {
+        font-size: 24px;
+    }
+}
+
+.seats-left {
+
+}

@@ -1,0 +1,139 @@
+@import "../../styles/_mixins.scss";
+
+.header-container {
+    @include flex(row, space-between); /* Keep space-between to push items to opposite ends */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0px;
+    background-color: transparent;
+    color: white;
+    position: relative; /* To ensure absolute positioned logo stays relative to this container */
+
+    @include mq("tablet-wide", min) {
+        padding-right: 20px;
+        font-size: 18px;
+    }
+}
+
+.logo-container {
+    position: absolute; 
+    width: 60px;
+    height: 50px;
+    z-index: 10; 
+
+    @include mq("tablet-wide", min) {
+        top: 10px; 
+        left: 20px; 
+        width: 100px;
+        height: 80px;
+    }
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.menu-items {
+    @include flex(row);
+    margin-left: auto; 
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 140px;
+    height: 100%;
+    background-color: #003366;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    padding: 20px;
+    z-index: 100;
+
+    &.open {
+        transform: translateX(0);
+    }
+
+    &-contents {
+        margin-top: 20px; 
+    }
+}
+
+.side-menu-contents > a {
+    display: block; 
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+}
+
+.hamburger-open {
+    z-index: 101;
+    position: relative;
+}
+
+.item {
+    display: block;
+    margin: 20px 0; 
+    padding-bottom: 5px;
+    cursor: pointer;
+    position: relative; 
+    overflow: hidden; 
+    text-decoration: none;
+    color: white;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px; 
+        background-color: #FF6F61; 
+        transform: scaleX(0);
+        transform-origin: bottom left;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover:after {
+        transform: scaleX(1);
+    }
+}
+
+.desktop-menu {
+    @include flex(row);
+    gap: 20px;
+    font-size: 22px;
+    @include mq("tablet-wide", max) {
+        display: none;
+    }
+}
+
+.mobile-menu {
+    @include flex(column);
+
+    @include mq("tablet-wide", min) {
+        display: none;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 99;
+}
+
+.hero-section {
+    @include mq("tablet-wide", min) {
+        margin-top: 50px;
+    }
+}

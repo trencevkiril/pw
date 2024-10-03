@@ -1,0 +1,80 @@
+@import "../../styles/_mixins.scss";
+
+.event-container {
+  @include mq("tablet", min) {
+    @include flex(row, center, flex-start);
+    column-gap: 20px;
+  }
+}
+
+.event-image-title {
+  margin-top: 10px;
+
+  @include mq("tablet", min) {
+    order: 2;
+    font-size: 28px;
+  }
+
+  @include mq("desktop", min) {
+    font-size: 44px;
+  }
+}
+
+.event-image {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: 230 / 300;
+  border-radius: 8px;
+
+  @include mq("tablet", min) {
+    height: 100%;
+    order: 1;
+  }
+}
+
+.event-image-container {
+  @include mq("tablet", min) {
+    @include flex(column);
+    flex: 1 1 40%; 
+  }
+}
+
+.event-details-container {
+  margin-top: 5px;
+  @include flex(column);
+  gap: 5px;
+
+  @include mq("tablet", min) {
+    @include flex(row);
+    flex: 1 1 60%;
+    width: 100%;
+    margin-top: 0px;
+  }
+}
+
+.event-detail {
+  background-color: #f5f5f5;
+  width: 100%;
+  @include flex(row, center, center);
+
+  @include mq("tablet-wide", min) {
+    padding: 10px;
+    font-size: 22px;
+  }
+}
+
+.event-text {
+  @include flex(column);
+  color: #8d8d8d
+}
+
+.event-icontext {
+  @include flex(row);
+  column-gap: 10px;
+  color: #FF6F61;
+}
+
+.event-details-wrapper {
+  width: 100%;
+}

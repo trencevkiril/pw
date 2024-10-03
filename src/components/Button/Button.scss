@@ -1,0 +1,24 @@
+@import "../../styles/_mixins.scss";
+
+.button {
+    padding: 10px 12px;
+    background-color: #FF6F61;
+    text-align: center; 
+    border-radius: 8px; 
+    display: inline-block;
+    width: max-content;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 16px; 
+    color: white;
+    
+    @include mq("tablet-wide", min) {
+        margin-top: 12px;
+        font-size: 22px; 
+    }
+
+    &:hover {
+        background-color: #E65A50;
+        cursor: pointer;
+    }
+}

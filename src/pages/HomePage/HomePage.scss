@@ -1,0 +1,65 @@
+@import "../../styles/_mixins.scss";
+
+.brush-stroke {
+    position: absolute;
+    left: -350px;
+    height: 50px;
+    width: 700px;
+    top: 39dvh;
+
+
+    @include mq("tablet", min) {
+        left: -200px;
+        height: 50px;
+        width: 700px;
+    }
+
+    @include mq("tablet-wide", min) {
+        top: 49dvh; 
+        left: -180px;
+        height: 50px;
+        width: 1000px;
+    }
+
+    @include mq("desktop-wide", min) {
+        top: 48dvh; 
+    }
+
+    @include mq("tv", min) {
+        left: -400px;
+        height: 80px;
+        width: 1600px;
+    }
+}
+
+.picture-section-container {
+    @include flex(row, space-between);
+    gap: 10px;
+    // margin-top: 20px;
+}
+
+
+.picture-section {
+    flex: 1;
+    height: auto;
+    max-width: calc(33.333% - 10px);
+    object-fit: cover;
+}
+
+.picture-section-header {
+    font-size: 24px;
+
+    @include mq("tablet", min) {
+        font-size: 44px;
+    }
+}
+
+.text-header {
+    padding-top: 0px;
+}
+
+.paragraphs {
+    @include mq("tablet", min) {
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,33 @@
+@import "../../styles/_mixins.scss";
+
+.hero-container {
+    height: 40dvh;
+    width: 100dvw;
+    background-image: url("../../images/starryNight2.png");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    overflow: visible; /* Allow content to overflow */
+
+    @include mq("tablet", min) {
+        height: 40dvh;
+    }
+
+    @include mq("tablet-wide", min) {
+        height: 50dvh;
+    }
+
+    h1 {
+        margin-bottom: 12px;
+    }
+}
+
+.sub-heading {
+    margin-bottom: 12px;
+
+    @include mq("tablet-wide", min) {
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+}
+

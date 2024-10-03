@@ -1,0 +1,31 @@
+@import "../src/styles/_mixins.scss";
+
+body {
+  margin: 0;
+  font-family: "Fira Sans", Arial, sans-serif;
+}
+
+section
+ {
+  padding: 24px 5vw;
+
+  @include mq("phablet", min) {
+    padding: 24px 10vw;
+  }
+
+  @include mq("desktop", min) {
+    padding: 29px 15vw;
+  }
+
+  @include mq("desktop-wide-helper", min) {
+    padding: 24px 20vw;
+  }
+}
+
+h1 {
+  font-size: 28px;
+
+  @include mq("tablet", min) {
+    font-size: 44px;
+  }
+}
