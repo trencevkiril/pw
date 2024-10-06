@@ -1,7 +1,13 @@
 @import "../../styles/_mixins.scss";
 
 .paragraphs {
+    font-size: 22px;
     @include mq("tablet", min) {
-        font-size: 22px;
+        font-size: 30px;
     }
+}
+
+p {
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
