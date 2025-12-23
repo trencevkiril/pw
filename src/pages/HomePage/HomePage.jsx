@@ -25,7 +25,7 @@ export default function HomePage() {
         <div className="paragraphs">
           <p>{t("paragraph1")}</p>
           <p>{t("paragraph2")}</p>
-          <p>{t("paragraph3")}</p>
+          {/* <p>{t("paragraph3")}</p> */}
         </div>
       </section>
       <Events limit={3} showMoreButton={true} />

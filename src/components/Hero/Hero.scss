@@ -26,6 +26,18 @@
         z-index: 2;
     }
 
+    &.hero-compact {
+        padding-bottom: 5px;
+
+        @include mq("tablet", min) {
+            padding-bottom: 15px;
+        }
+
+        @include mq("tablet-wide", min) {
+            padding-bottom: 30px;
+        }
+    }
+
     @include mq("tablet", min) {
         padding-bottom: 50px;
 
@@ -36,7 +48,7 @@
 
     @include mq("tablet-wide", min) {
         padding-bottom: 70px;
-        background-position: center; 
+        background-position: center;
 
     }
 

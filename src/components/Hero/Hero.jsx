@@ -68,7 +68,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="hero-container">
+    <div className={`hero-container ${hideContent ? 'hero-compact' : ''}`}>
       <Header />
       {!hideContent && (
         <section className="section hero-section">
