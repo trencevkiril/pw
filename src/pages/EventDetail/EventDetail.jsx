@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEvents } from "../../context/EventsContext";
 import "./EventDetail.scss";
-import { formatDate, getDayName } from "../../utils/dateUtils";
+import { formatDate } from "../../utils/dateUtils";
 import { useTranslation } from "react-i18next";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
