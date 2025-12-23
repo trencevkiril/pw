@@ -112,3 +112,8 @@
   color: white;
   text-decoration: none;
 }
+
+.see-more-container {
+  @include flex(row, center);
+  margin-top: 30px;
+}

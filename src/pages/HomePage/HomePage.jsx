@@ -5,6 +5,7 @@ import facePic from "../../images/face.png";
 import "./HomePage.scss";
 import { useTranslation } from "react-i18next";
 import Events from "../../components/Events/Events";
+import GoogleReviews from "../../components/GoogleReviews/GoogleReviews";
 import Pics from "../../components/Pics/Pics";
 
 export default function HomePage() {
@@ -34,6 +35,7 @@ export default function HomePage() {
         </section>
       </div>
       <Pics />
+      <GoogleReviews />
     </div>
   );
 }
