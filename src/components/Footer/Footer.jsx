@@ -8,11 +8,15 @@ export default function Footer() {
   const { t } = useTranslation();
   const googleMapsUrl = "https://www.google.com/maps/place/Paint%26Wine/data=!4m2!3m1!1s0x0:0xe968d15ed59c16d9?sa=X&ved=1t:2428&ictx=111";
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section footer-logo">
-          <Link to="/">
+          <Link to="/" onClick={handleLogoClick}>
             <img src={logo} alt="Paint & Wine Logo" className="footer-logo-img" />
           </Link>
         </div>

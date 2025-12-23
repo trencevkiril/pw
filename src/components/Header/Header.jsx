@@ -30,9 +30,13 @@ export default function Header() {
     i18n.changeLanguage(newLang);
   };
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="header-container">
-      <Link to="/" className="logo-container">
+      <Link to="/" className="logo-container" onClick={handleLogoClick}>
         <img src={logo} alt="logo" className="logo" />
       </Link>
       <div className="menu-items">
