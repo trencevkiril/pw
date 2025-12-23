@@ -65,5 +65,30 @@
 
     "reservation-text": "Подготвени сте да ни се придружите? Резервирајте го вашето место со пораката до нас!",
     "message-us-button": "Испратете Порака",
-    "fun-moments-title": "Погледнете ги овие забавни моменти!"
+    "fun-moments-title": "Погледнете ги овие забавни моменти!",
+
+    "contact-form-name": "Име и Презиме",
+    "contact-form-email": "Е-пошта",
+    "contact-form-number": "Број",
+    "contact-form-message": "Порака",
+    "contact-form-submit": "Испрати",
+
+    "contact-page-heading": "Контактирајте не или Резервирајте Приватен Настан",
+    "form-toggle-contact": "Контактирајте не",
+    "form-toggle-private": "Барање за Приватен Термин",
+
+    "private-event-form-title": "Резервација на Приватен Настан",
+    "private-event-date-from": "Датум Од",
+    "private-event-date-to": "Датум До",
+    "private-event-time-from": "Време Од",
+    "private-event-time-to": "Време До",
+    "private-event-guests": "Број на Лица",
+    "private-event-phone": "Број за Контакт",
+    "private-event-email": "Е-пошта за Контакт",
+    "private-event-requirements": "Специјални Барања",
+    "private-event-catering": "Кетеринг",
+    "private-event-catering-yes": "Да",
+    "private-event-catering-no": "Не",
+
+    "form-success-message": "Успешно испратено! Ќе ве контактираме наскоро."
 }

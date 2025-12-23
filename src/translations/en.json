@@ -65,5 +65,30 @@
 
   "reservation-text": "Ready to join us? Reserve your seat by sending us a message!",
   "message-us-button": "Message Us",
-  "fun-moments-title": "Look at These Fun Moments!"
+  "fun-moments-title": "Look at These Fun Moments!",
+
+  "contact-form-name": "Name and Surname",
+  "contact-form-email": "Email",
+  "contact-form-number": "Number",
+  "contact-form-message": "Message",
+  "contact-form-submit": "Submit",
+
+  "contact-page-heading": "Contact Us or Reserve Your Private Event",
+  "form-toggle-contact": "Contact Us",
+  "form-toggle-private": "Private Event Request",
+
+  "private-event-form-title": "Private Event Booking",
+  "private-event-date-from": "Date From",
+  "private-event-date-to": "Date To",
+  "private-event-time-from": "Time From",
+  "private-event-time-to": "Time To",
+  "private-event-guests": "Number of Guests",
+  "private-event-phone": "Contact Number",
+  "private-event-email": "Contact Email",
+  "private-event-requirements": "Special Requirements",
+  "private-event-catering": "Catering",
+  "private-event-catering-yes": "Yes",
+  "private-event-catering-no": "No",
+
+  "form-success-message": "Successfully submitted! We'll get back to you soon."
 }

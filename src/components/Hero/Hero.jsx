@@ -24,23 +24,27 @@ export default function Hero() {
     switch (location.pathname) {
       case "/events":
         return {
-          heading: t("events-heading"),
-          subHeading: t("events-sub-heading"),
+          heading: "",
+          subHeading: "",
+          hideContent: true,
         };
       case "/gallery":
         return {
-          heading: t("gallery-heading"),
-          subHeading: t("gallery-sub-heading"),
+          heading: "",
+          subHeading: "",
+          hideContent: true,
         };
       case "/contact-us":
         return {
-          heading: t("contact-heading"),
-          subHeading: t("contact-sub-heading"),
+          heading: "",
+          subHeading: "",
+          hideContent: true,
         };
       case "/about-us":
         return {
-          heading: t("about-heading"),
-          subHeading: t("about-sub-heading"),
+          heading: "",
+          subHeading: "",
+          hideContent: true,
         };
       default:
         return {
