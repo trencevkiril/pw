@@ -15,8 +15,9 @@ export default function Hero() {
 
     if (isEventDetail) {
       return {
-        heading: t("event-detail-heading"),
-        subHeading: t("event-detail-sub-heading"),
+        heading: "",
+        subHeading: "",
+        hideContent: true,
       };
     }
 
@@ -56,6 +57,7 @@ export default function Hero() {
     subHeading,
     showButton = false,
     buttonText = "",
+    hideContent = false,
   } = getHeroContent();
 
   const handleScrollToEvents = () => {
@@ -68,13 +70,15 @@ export default function Hero() {
   return (
     <div className="hero-container">
       <Header />
-      <section className="section hero-section">
-        <h1>{heading}</h1>
-        <div className="sub-heading">{subHeading}</div>
-        {showButton && (
-          <Button title={buttonText} onClick={handleScrollToEvents} />
-        )}
-      </section>
+      {!hideContent && (
+        <section className="section hero-section">
+          <h1>{heading}</h1>
+          <div className="sub-heading">{subHeading}</div>
+          {showButton && (
+            <Button title={buttonText} onClick={handleScrollToEvents} />
+          )}
+        </section>
+      )}
     </div>
   );
 }

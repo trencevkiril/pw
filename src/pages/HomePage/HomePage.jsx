@@ -18,7 +18,7 @@ export default function HomePage() {
         <img src={facePic} className="picture-section" alt="facePic" />
       </section>
       <section className="text-header">
-        <div className="picture-section-header">
+        <div style={{marginBottom: "1rem"}} className="picture-section-header">
           {t("picture-section-header")}
         </div>
         <div className="paragraphs">

@@ -27,7 +27,7 @@
 }
 
 .event-item {
-  @include flex(column, flex-start, flex-start);
+  @include flex(column, flex-start, center);
   gap: 5px;
 }
 
@@ -35,6 +35,7 @@
   font-weight: 800;
   color: #003366;
   font-size: 22px;
+  text-align: center;
 
   @include mq("tablet", min) {
     font-size: 30px;
@@ -46,7 +47,7 @@
 }
 
 .day-time {
-  @include flex(row, flex-start);
+  @include flex(row, center);
   gap: 10px;
   font-size: 18px;
   color: #FF6F61;
