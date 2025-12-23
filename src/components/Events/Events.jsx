@@ -14,7 +14,7 @@ export default function Events({ limit, showMoreButton = false }) {
 
   return (
     <section id="homepage-events" className="events">
-      <div className="header">{t("event-header")}</div>
+      <h1 className="page-header">{t("event-header")}</h1>
       <div className="event-list">
         {loading ? (
           <p>Loading events...</p>
@@ -47,7 +47,7 @@ export default function Events({ limit, showMoreButton = false }) {
       </div>
       {showMoreButton && events.length > limit && (
         <div className="see-more-container">
-          <Link to="/events">
+          <Link to="/events" onClick={() => window.scrollTo(0, 0)}>
             <Button title={t("see-more-events")} />
           </Link>
         </div>

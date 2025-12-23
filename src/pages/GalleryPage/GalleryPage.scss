@@ -1,13 +1,13 @@
 @import "../../styles/_mixins.scss";
 
-.paragraphs {
+.page-header {
     font-size: 22px;
+    color: #003366;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: 600;
+
     @include mq("tablet", min) {
         font-size: 30px;
     }
-}
-
-p {
-    margin-bottom: 0px;
-    margin-top: 0px;
 }

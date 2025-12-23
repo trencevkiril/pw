@@ -1,5 +1,18 @@
-// @import "../../styles/_mixins.scss";
+@import "../../styles/_mixins.scss";
 
-// .submit-button {
-//     width: 100%;
-// }
+.page-header {
+    font-size: 22px;
+    color: #003366;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-align: center;
+
+    @include mq("tablet", min) {
+        font-size: 30px;
+    }
+
+    @include mq("desktop", min) {
+        font-size: 36px;
+    }
+}

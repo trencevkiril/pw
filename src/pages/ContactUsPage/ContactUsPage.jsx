@@ -114,19 +114,9 @@ export default function ContactUsPage() {
   return (
       <Box sx={{ maxWidth: "900px", margin: "auto", padding: 3 }}>
         {/* Page Heading */}
-        <Box
-          component="h1"
-          sx={{
-            textAlign: "center",
-            color: "#003366",
-            fontSize: { xs: "24px", sm: "32px", md: "36px" },
-            fontWeight: "bold",
-            marginBottom: 3,
-            marginTop: 0,
-          }}
-        >
+        <h1 className="page-header">
           {t("contact-page-heading")}
-        </Box>
+        </h1>
 
         {/* Success Message */}
         {showSuccess && (

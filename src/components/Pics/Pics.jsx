@@ -17,7 +17,7 @@ export default function Pics() {
           image,
           order
         }`;
-        const images = await client.fetch(query);
+        const images = await client.fetch(query, {}, { cache: 'no-store' });
         setGalleryImages(images);
       } catch (error) {
         console.error('Error fetching gallery images:', error);

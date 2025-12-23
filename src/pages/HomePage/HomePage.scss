@@ -47,11 +47,15 @@
 }
 
 .picture-section-header {
-    font-size: 24px;
+    font-size: 22px;
+    color: #003366;
+    font-weight: 600;
     margin-bottom: 2rem;
+    text-align: center;
+    font-family: inherit;
 
     @include mq("tablet", min) {
-        font-size: 44px;
+        font-size: 38px;
         margin-bottom: 3rem;
     }
 }
@@ -62,6 +66,7 @@
 
 .paragraphs {
     line-height: 1.6;
+    text-align: center;
 
     p {
         margin-bottom: 1.5rem;

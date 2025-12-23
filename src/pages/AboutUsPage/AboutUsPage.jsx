@@ -12,7 +12,7 @@ export default function AboutUsPage() {
   return (
     <div>
       <section>
-        <p className="section-header">{t("about-us-paragraph")}</p>
+        <h1 className="page-header">{t("about-us-paragraph")}</h1>
       </section>
 
       <section>

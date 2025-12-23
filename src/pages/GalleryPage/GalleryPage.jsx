@@ -8,14 +8,10 @@ export default function GalleryPage() {
 
   return (
     <div>
-      <div className="paragraphs">
-        <section>
-          <p>{t("paragraph4")}</p>
-        </section>
-      </div>
-      <div>
-        <Pics />
-      </div>
+      <section>
+        <h1 className="page-header">{t("paragraph4")}</h1>
+      </section>
+      <Pics />
     </div>
   );
 }
