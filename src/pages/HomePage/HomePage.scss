@@ -48,9 +48,11 @@
 
 .picture-section-header {
     font-size: 24px;
+    margin-bottom: 2rem;
 
     @include mq("tablet", min) {
         font-size: 44px;
+        margin-bottom: 3rem;
     }
 }
 
@@ -59,7 +61,18 @@
 }
 
 .paragraphs {
+    line-height: 1.6;
+
+    p {
+        margin-bottom: 1.5rem;
+    }
+
     @include mq("tablet", min) {
         font-size: 22px;
+        line-height: 1.5;
+
+        p {
+            margin-bottom: 2rem;
+        }
     }
 }
