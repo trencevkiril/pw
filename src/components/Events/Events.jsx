@@ -34,10 +34,12 @@ export default function Events({ limit, showMoreButton = false }) {
                   <span>{event.endTime}</span>
                 </div>
               </div>
-              <div className="image-container">
+              <Link to={`/event/${event.id}`} className="image-container">
                 <img src={event.media} className="image" alt={event.city} />
-              </div>
-              <div className="picutre-name">{event.pictureName}</div>
+              </Link>
+              <Link to={`/event/${event.id}`} className="picutre-name">
+                {event.pictureName}
+              </Link>
               <div className="price">{event.price}.00 EUR</div>
             </div>
           ))

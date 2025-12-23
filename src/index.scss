@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: "Fira Sans", Arial, sans-serif;
+  font-family: "Lato", Arial, sans-serif;
 }
 
 section
@@ -20,6 +20,10 @@ section
   @include mq("desktop-wide-helper", min) {
     padding: 24px 20vw;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cormorant Garamond", serif;
 }
 
 h1 {

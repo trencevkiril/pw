@@ -1,7 +1,7 @@
 @import "../../styles/_mixins.scss";
 
 .header-container {
-    @include flex(row, space-between); /* Keep space-between to push items to opposite ends */
+    @include flex(row, space-between);
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -9,7 +9,7 @@
     border: 0px;
     background-color: transparent;
     color: white;
-    position: relative; /* To ensure absolute positioned logo stays relative to this container */
+    position: relative;
 
     @include mq("tablet-wide", min) {
         padding-right: 20px;
@@ -18,14 +18,15 @@
 }
 
 .logo-container {
-    position: absolute; 
+    position: absolute;
     width: 60px;
     height: 50px;
-    z-index: 10; 
+    z-index: 10;
+    left: 30px;
 
     @include mq("tablet-wide", min) {
-        top: 10px; 
-        left: 20px; 
+        top: 10px;
+        left: 50px;
         width: 100px;
         height: 80px;
     }
@@ -38,7 +39,12 @@
 
 .menu-items {
     @include flex(row);
-    margin-left: auto; 
+    margin-left: auto;
+    margin-right: 10px;
+
+    @include mq("tablet-wide", min) {
+        margin-right: 30px;
+    }
 }
 
 .side-menu {

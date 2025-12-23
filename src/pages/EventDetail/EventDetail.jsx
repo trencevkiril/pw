@@ -8,7 +8,6 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import CardMUI from "../../components/Card/Card";
 
 export default function EventDetail() {
   const { id } = useParams();
@@ -69,7 +68,6 @@ export default function EventDetail() {
             </p>
           </div>
         </div>
-        <CardMUI spotsLeft={event.availableSpotsLeft}/>
       </div>
     </section>
   );
