@@ -107,15 +107,15 @@
 }
 
 .star {
-  color: #FFB800;
-  font-size: 20px;
+  color: #003366;
+  font-size: 16px;
 
   @include mq("tablet", min) {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   @include mq("desktop", min) {
-    font-size: 26px;
+    font-size: 20px;
   }
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useEvents } from "../../context/EventsContext";
 import "./EventDetail.scss";
@@ -16,6 +16,10 @@ export default function EventDetail() {
   const { events } = useEvents();
   const event = events.find((event) => event.id === id);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!event) {
     return <div>Event not found</div>;
