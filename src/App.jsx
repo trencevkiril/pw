@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Hero from "./components/Hero/Hero";
+import Footer from "./components/Footer/Footer";
 import "./i18n";
 import "./index.scss";
 import { EventsProvider } from "./context/EventsContext";
@@ -23,8 +24,9 @@ function App() {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/event/:id" element={<EventDetail />} /> 
+          <Route path="/event/:id" element={<EventDetail />} />
         </Routes>
+        <Footer />
       </Router>
     </EventsProvider>
   );
