@@ -1,7 +1,7 @@
 import React from "react";
-import turtlesPic from "../../images/turtles.png";
-import winePic from "../../images/wine.png";
-import facePic from "../../images/face.png";
+import turtlesPic from "../../images/turtles.webp";
+import winePic from "../../images/wine.webp";
+import facePic from "../../images/face.webp";
 import "./HomePage.scss";
 import { useTranslation } from "react-i18next";
 import Events from "../../components/Events/Events";
@@ -14,9 +14,9 @@ export default function HomePage() {
   return (
     <div className="container">
       <section className="picture-section-container">
-        <img src={turtlesPic} className="picture-section" alt="turtlesPic" />
-        <img src={winePic} className="picture-section" alt="winePic" />
-        <img src={facePic} className="picture-section" alt="facePic" />
+        <img src={turtlesPic} className="picture-section" alt="turtlesPic" loading="lazy" />
+        <img src={winePic} className="picture-section" alt="winePic" loading="lazy" />
+        <img src={facePic} className="picture-section" alt="facePic" loading="lazy" />
       </section>
       <section className="text-header">
         <div className="picture-section-header">

@@ -33,7 +33,7 @@ export function EventsProvider({ children }) {
         const transformedEvents = data.map((event) => ({
           id: event._id,
           pictureName: event.pictureName,
-          media: event.image ? urlFor(event.image).url() : '',
+          media: event.image ? urlFor(event.image).width(600).quality(80).format('webp').url() : '',
           date: event.date,
           startTime: event.startTime,
           endTime: event.endTime,

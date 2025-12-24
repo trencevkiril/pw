@@ -39,7 +39,9 @@ export default function Pics() {
     );
   }
 
-  const imageSources = galleryImages.map(img => urlFor(img.image).url());
+  const imageSources = galleryImages.map(img =>
+    urlFor(img.image).width(1920).quality(85).format('webp').url()
+  );
 
   return (
     <div>
@@ -48,9 +50,10 @@ export default function Pics() {
           {galleryImages.map((img, index) => (
             <img
               key={img._id}
-              src={urlFor(img.image).url()}
+              src={urlFor(img.image).width(400).quality(80).format('webp').url()}
               alt={`Gallery image ${index + 1}`}
               className="gallery-image"
+              loading="lazy"
               onClick={() => {
                 setToggler(!toggler);
                 setSlide(index + 1);

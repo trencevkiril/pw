@@ -35,7 +35,7 @@ export default function Events({ limit, showMoreButton = false }) {
                 </div>
               </div>
               <Link to={`/event/${event.id}`} className="image-container">
-                <img src={event.media} className="image" alt={event.city} />
+                <img src={event.media} className="image" alt={event.city} loading="lazy" />
               </Link>
               <Link to={`/event/${event.id}`} className="picutre-name">
                 {event.pictureName}

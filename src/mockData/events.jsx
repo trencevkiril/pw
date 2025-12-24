@@ -1,6 +1,6 @@
-import turtlesPic from "../images/turtles.png";
-import winePic from "../images/wine.png";
-import facePic from "../images/face.png";
+import turtlesPic from "../images/turtles.webp";
+import winePic from "../images/wine.webp";
+import facePic from "../images/face.webp";
 
 export const mockEvents = [
   {

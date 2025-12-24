@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo.webp";
 import { useTranslation } from "react-i18next";
 import { Twirl as Hamburger } from "hamburger-react";
 

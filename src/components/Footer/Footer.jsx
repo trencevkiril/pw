@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Footer.scss";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo.webp";
 
 export default function Footer() {
   const { t } = useTranslation();
