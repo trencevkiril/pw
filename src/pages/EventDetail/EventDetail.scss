@@ -89,7 +89,8 @@
 
 .event-text {
   @include flex(column);
-  color: #8d8d8d
+  color: #8d8d8d;
+  margin: 0px;
 }
 
 .event-icontext {
