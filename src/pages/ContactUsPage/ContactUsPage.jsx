@@ -114,7 +114,7 @@ export default function ContactUsPage() {
   return (
       <Box sx={{ maxWidth: "900px", margin: "auto", padding: 3 }}>
         {/* Page Heading */}
-        <h1 className="page-header">
+        <h1 style={{marginBottom: "10px"}} className="page-header">
           {t("contact-page-heading")}
         </h1>
 

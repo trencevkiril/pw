@@ -91,6 +91,7 @@
 .picutre-name {
   color: #003366;
   font-size: 18px;
+  text-decoration: none;
 
   @include mq("tablet", min) {
     font-size: 22px;
