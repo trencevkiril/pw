@@ -37,7 +37,7 @@
 }
 
 .carousel-container {
-  padding: 0 10px;
+  padding: 0;
 
   @include mq("tablet", min) {
     padding: 0 20px;
@@ -45,9 +45,13 @@
 }
 
 .carousel-item-padding {
-  padding: 0 10px;
+  padding: 0;
 
   @include mq("tablet", min) {
+    padding: 0 10px;
+  }
+
+  @include mq("desktop", min) {
     padding: 0 15px;
   }
 }
