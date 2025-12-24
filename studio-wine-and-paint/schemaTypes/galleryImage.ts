@@ -18,8 +18,8 @@ export default defineType({
       name: 'order',
       title: 'Display Order',
       type: 'number',
-      description: 'Order in which the image appears in the gallery (1-9)',
-      validation: (Rule) => Rule.required().min(1).max(9),
+      description: 'Order in which the image appears in the gallery',
+      validation: (Rule) => Rule.required().min(1),
     }),
   ],
   preview: {

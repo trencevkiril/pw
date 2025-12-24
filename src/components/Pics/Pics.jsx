@@ -12,7 +12,7 @@ export default function Pics() {
   useEffect(() => {
     const fetchGalleryImages = async () => {
       try {
-        const query = `*[_type == "galleryImage"] | order(order asc) [0...9] {
+        const query = `*[_type == "galleryImage"] | order(order asc) {
           _id,
           image,
           order
