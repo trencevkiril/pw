@@ -12,6 +12,8 @@ import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import EventDetail from "./pages/EventDetail/EventDetail";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/contact-us" element={<ContactUsPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/event/:id" element={<EventDetail />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-conditions" element={<TermsAndConditionsPage />} />
         </Routes>
         <Footer />
       </Router>

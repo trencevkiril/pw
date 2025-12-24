@@ -46,6 +46,18 @@ export default function Hero() {
           subHeading: "",
           hideContent: true,
         };
+      case "/privacy-policy":
+        return {
+          heading: "",
+          subHeading: "",
+          hideContent: true,
+        };
+      case "/terms-conditions":
+        return {
+          heading: "",
+          subHeading: "",
+          hideContent: true,
+        };
       default:
         return {
           heading: t("home-heading"),

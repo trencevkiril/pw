@@ -12,6 +12,10 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -32,7 +36,7 @@ export default function Footer() {
             Strasho Pindzur 7, Skopje 1000
           </a>
           <a href="tel:+38978246264" className="footer-phone">
-            078 246 264
+            +389 78 246 264
           </a>
           <a href="mailto:info@paintandwineskopje.com" className="footer-email">
             info@paintandwineskopje.com
@@ -41,10 +45,10 @@ export default function Footer() {
 
         <div className="footer-section footer-links">
           <h3>{t("footer-policy")}</h3>
-          <Link to="/privacy-policy" className="footer-link">
+          <Link to="/privacy-policy" className="footer-link" onClick={handleScrollToTop}>
             {t("footer-privacy-policy")}
           </Link>
-          <Link to="/terms-conditions" className="footer-link">
+          <Link to="/terms-conditions" className="footer-link" onClick={handleScrollToTop}>
             {t("footer-terms-conditions")}
           </Link>
         </div>

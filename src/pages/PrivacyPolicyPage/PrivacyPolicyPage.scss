@@ -1,0 +1,22 @@
+.privacy-policy-page {
+  padding: 2rem 0;
+
+  .section-title {
+    color: var(--primary-color, #8b5a8b);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .last-updated {
+    font-style: italic;
+    color: #666;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+  }
+
+  .p-font {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+}
