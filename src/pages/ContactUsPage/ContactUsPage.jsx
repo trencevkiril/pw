@@ -56,7 +56,7 @@ export default function ContactUsPage() {
     const formData = new FormData(e.target);
 
     // Append the access key, form type, and custom subject
-    formData.append("access_key", "9607198e-a093-48b2-884b-54dc0b8cad54");
+    formData.append("access_key", "56ed0f1d-9644-46b8-9dcd-4bed2f75b8b7");
 
     if (formType === "contact") {
       formData.append("subject", "New Contact Form Submission - Paint & Wine");

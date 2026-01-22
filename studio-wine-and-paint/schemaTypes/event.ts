@@ -56,11 +56,13 @@ export default defineType({
       name: 'status',
       title: 'Status',
       type: 'string',
+      initialValue: 'FREE',
       options: {
         list: [
           {title: 'Free', value: 'FREE'},
           {title: 'Booked', value: 'BOOKED'},
         ],
+        layout: 'radio',
       },
       validation: (Rule) => Rule.required(),
     }),
