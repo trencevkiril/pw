@@ -38,8 +38,8 @@ export default function Footer() {
           <a href="tel:+38978246264" className="footer-phone">
             +389 78 246 264
           </a>
-          <a href="mailto:info@paintandwineskopje.com" className="footer-email">
-            info@paintandwineskopje.com
+          <a href="mailto:paintandwineskopje@gmail.com" className="footer-email">
+            paintandwineskopje@gmail.com
           </a>
         </div>
 

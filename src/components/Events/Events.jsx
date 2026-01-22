@@ -35,12 +35,12 @@ export default function Events({ limit, showMoreButton = false }) {
                 </div>
               </div>
               <Link to={`/event/${event.id}`} className="image-container">
-                <img src={event.media} className="image" alt={event.city} loading="lazy" />
+                <img src={event.media} className="image" alt={event.pictureName} loading="lazy" />
               </Link>
               <Link to={`/event/${event.id}`} className="picutre-name">
                 {event.pictureName}
               </Link>
-              <div className="price">{event.price}.00 EUR</div>
+              <div className="price">{event.price}.00 {t("currency")}</div>
             </div>
           ))
         )}

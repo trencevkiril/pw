@@ -62,7 +62,7 @@ export default function EventDetail() {
                   <CreditCardIcon />
                   {t("price-label")}
                 </strong>
-                {event.price} EUR
+                {event.price} {t("currency")}
               </p>
             </div>
             <div className="event-detail">
@@ -71,7 +71,7 @@ export default function EventDetail() {
                   <FmdGoodOutlinedIcon />
                   {t("city-label")}
                 </strong>
-                Skopje
+                {t("city")}
               </p>
             </div>
           </div>

@@ -37,16 +37,20 @@ export default defineType({
       }).error('Time must be in HH:MM format'),
     }),
     defineField({
+      name: 'endTime',
+      title: 'End Time',
+      type: 'string',
+      description: 'Format: HH:MM (e.g., 21:00)',
+      validation: (Rule) => Rule.required().regex(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, {
+        name: 'time',
+        invert: false,
+      }).error('Time must be in HH:MM format'),
+    }),
+    defineField({
       name: 'price',
       title: 'Price',
       type: 'number',
       validation: (Rule) => Rule.required().min(0),
-    }),
-    defineField({
-      name: 'city',
-      title: 'City',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'status',
