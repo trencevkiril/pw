@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "Paint & Wine Skopje";
 const DEFAULT_TITLE = "Paint & Wine Skopje | Art & Wine Events in Macedonia";
-const DEFAULT_DESCRIPTION = "Join our paint and wine events in Skopje, Macedonia. Create beautiful art while enjoying wine in a fun, social atmosphere. Book private events or join our workshops.";
+const DEFAULT_DESCRIPTION = "Придружете се на нашите креативни работилници за сликање со вино во Скопје. Создадете уметност додека уживате во пријатна атмосфера.";
 const SITE_URL = "https://paintandwine.mk";
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
 
