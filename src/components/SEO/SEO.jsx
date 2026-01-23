@@ -5,7 +5,7 @@ const SITE_NAME = "Paint & Wine Skopje";
 const DEFAULT_TITLE = "Paint & Wine Skopje | Art & Wine Events in Macedonia";
 const DEFAULT_DESCRIPTION = "Join our paint and wine events in Skopje, Macedonia. Create beautiful art while enjoying wine in a fun, social atmosphere. Book private events or join our workshops.";
 const SITE_URL = "https://paintandwine.mk";
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
 
 export default function SEO({
   title,
