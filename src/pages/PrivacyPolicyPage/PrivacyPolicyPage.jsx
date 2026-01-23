@@ -1,12 +1,18 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "./PrivacyPolicyPage.scss";
+import SEO from "../../components/SEO/SEO";
 
 export default function PrivacyPolicyPage() {
   const { t } = useTranslation();
 
   return (
     <div className="privacy-policy-page">
+      <SEO
+        title="Privacy Policy"
+        description="Read our privacy policy to understand how Paint & Wine Skopje collects, uses, and protects your personal information."
+        url="/privacy-policy"
+      />
       <section>
         <h1 className="page-header">{t("privacy-policy-title")}</h1>
 

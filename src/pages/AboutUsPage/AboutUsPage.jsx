@@ -5,12 +5,18 @@ import masksImg from "../../images/masksImg.svg";
 import paintImg from "../../images/paintImg.svg";
 import canvasImg from "../../images/canvasImg.svg";
 import workshopImg from "../../images/workshopImg.svg";
+import SEO from "../../components/SEO/SEO";
 
 export default function AboutUsPage() {
   const { t } = useTranslation();
 
   return (
     <div>
+      <SEO
+        title="About Us"
+        description="Learn about Paint & Wine Skopje. We offer creative paint and wine workshops where you can create art, enjoy wine, and have fun with friends in a relaxed atmosphere."
+        url="/about-us"
+      />
       <section>
         <h1 className="page-header">{t("about-us-paragraph")}</h1>
       </section>
@@ -59,7 +65,7 @@ export default function AboutUsPage() {
         </h4>
         <p className="p-font">{t("atmosphere-paragraph")}</p>
       </section>
-      <section className="background"> 
+      <section className="background">
         <iframe
           width="100%"
           height="600"

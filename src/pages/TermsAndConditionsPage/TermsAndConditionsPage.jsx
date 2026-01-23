@@ -1,12 +1,18 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "./TermsAndConditionsPage.scss";
+import SEO from "../../components/SEO/SEO";
 
 export default function TermsAndConditionsPage() {
   const { t } = useTranslation();
 
   return (
     <div className="terms-conditions-page">
+      <SEO
+        title="Terms and Conditions"
+        description="Read our terms and conditions for Paint & Wine Skopje events, bookings, and services."
+        url="/terms-conditions"
+      />
       <section>
         <h1 className="page-header">{t("terms-conditions-title")}</h1>
 

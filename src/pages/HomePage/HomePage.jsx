@@ -7,12 +7,17 @@ import { useTranslation } from "react-i18next";
 import Events from "../../components/Events/Events";
 import GoogleReviews from "../../components/GoogleReviews/GoogleReviews";
 import Pics from "../../components/Pics/Pics";
+import SEO, { organizationSchema } from "../../components/SEO/SEO";
 
 export default function HomePage() {
   const { t } = useTranslation();
 
   return (
     <div className="container">
+      <SEO
+        url="/"
+        structuredData={organizationSchema}
+      />
       <section className="picture-section-container">
         <img src={turtlesPic} className="picture-section" alt="turtlesPic" loading="lazy" />
         <img src={winePic} className="picture-section" alt="winePic" loading="lazy" />

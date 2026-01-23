@@ -1,0 +1,9 @@
+# robots.txt for Paint & Wine Skopje
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://paintandwine.mk/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1

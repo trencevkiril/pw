@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextField, Button, Box, ToggleButton, ToggleButtonGroup, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Alert } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./ContactUsPage.scss";
+import SEO from "../../components/SEO/SEO";
 
 export default function ContactUsPage() {
   const { t } = useTranslation();
@@ -109,10 +110,15 @@ export default function ContactUsPage() {
       }
     }
   };
-  
+
 
   return (
       <Box sx={{ maxWidth: "900px", margin: "auto", padding: 3 }}>
+        <SEO
+          title="Contact Us"
+          description="Contact Paint & Wine Skopje for bookings, private events, and inquiries. Book your private paint and wine party or get in touch with any questions."
+          url="/contact-us"
+        />
         {/* Page Heading */}
         <h1 style={{marginBottom: "10px"}} className="page-header">
           {t("contact-page-heading")}
