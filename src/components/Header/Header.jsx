@@ -35,7 +35,7 @@ export default function Header() {
   };
 
   return (
-    <div className="header-container">
+    <header className="header-container">
       <Link to="/" className="logo-container" onClick={handleLogoClick}>
         <img src={logo} alt="logo" className="logo" />
       </Link>
@@ -75,6 +75,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

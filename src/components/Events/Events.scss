@@ -11,6 +11,8 @@
     margin-top: 0px;
     margin-bottom: 0px;
     font-weight: 600;
+    padding-top: 30px;
+    padding-bottom: 30px;
 
     @include mq("tablet", min) {
       font-size: 30px;
@@ -47,7 +49,7 @@
 
   &.event-item-booked {
     opacity: 0.7;
-    border-color: #cc0000;
+    // border-color: #cc0000;
 
     &:hover {
       box-shadow: none;
@@ -58,6 +60,7 @@
     }
 
     .picutre-name {
+      font-size: 18px;
       cursor: default;
     }
   }
@@ -95,15 +98,15 @@
 .day-time {
   @include flex(row, center);
   gap: 10px;
-  font-size: 18px;
-  color: #FF6F61;
+  font-size: 16px;
+  color: #a8392f;
 
   @include mq("tablet", min) {
-    font-size: 22px;
+    font-size: 16px;
   }
 
   @include mq("desktop", min) {
-    font-size: 24px;
+    font-size: 16px;
   }
 }
 
@@ -125,11 +128,11 @@
   text-decoration: none;
 
   @include mq("tablet", min) {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   @include mq("desktop", min) {
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 
@@ -139,11 +142,11 @@
   font-weight: 500;
 
   @include mq("tablet", min) {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   @include mq("desktop", min) {
-    font-size: 26px;
+    font-size: 20px;
   }
 }
 
@@ -155,4 +158,42 @@
 .see-more-container {
   @include flex(row, center);
   margin-top: 30px;
+  font-size: 20px;
+}
+
+.see-more-button {
+  padding: 12px 24px;
+  background-color: #a8392f;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+  display: inline-block;
+  width: max-content;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+
+  @include mq("tablet", min) {
+    font-size: 16px;
+    padding: 14px 28px;
+  }
+
+  @include mq("desktop", min) {
+    font-size: 18px;
+    padding: 16px 32px;
+  }
+
+  &:hover {
+    background-color: #9e1b0f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 111, 97, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }

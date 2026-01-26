@@ -16,7 +16,6 @@ export default function Hero() {
     if (isEventDetail) {
       return {
         heading: "",
-        subHeading: "",
         hideContent: true,
       };
     }
@@ -25,43 +24,36 @@ export default function Hero() {
       case "/events":
         return {
           heading: "",
-          subHeading: "",
           hideContent: true,
         };
       case "/gallery":
         return {
           heading: "",
-          subHeading: "",
           hideContent: true,
         };
       case "/contact-us":
         return {
           heading: "",
-          subHeading: "",
           hideContent: true,
         };
       case "/about-us":
         return {
           heading: "",
-          subHeading: "",
           hideContent: true,
         };
       case "/privacy-policy":
         return {
           heading: "",
-          subHeading: "",
           hideContent: true,
         };
       case "/terms-conditions":
         return {
           heading: "",
-          subHeading: "",
           hideContent: true,
         };
       default:
         return {
           heading: t("home-heading"),
-          subHeading: t("home-sub-heading"),
           showButton: true,
           buttonText: t("explore-events"),
         };
@@ -70,7 +62,6 @@ export default function Hero() {
 
   const {
     heading,
-    subHeading,
     showButton = false,
     buttonText = "",
     hideContent = false,
@@ -89,7 +80,6 @@ export default function Hero() {
       {!hideContent && (
         <section className="section hero-section">
           <h1>{heading}</h1>
-          <div className="sub-heading">{subHeading}</div>
           {showButton && (
             <Button title={buttonText} onClick={handleScrollToEvents} />
           )}

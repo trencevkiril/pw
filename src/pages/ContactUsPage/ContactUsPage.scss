@@ -7,12 +7,14 @@
     margin-bottom: 24px;
     font-weight: 600;
     text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
 
     @include mq("tablet", min) {
         font-size: 30px;
     }
 
     @include mq("desktop", min) {
-        font-size: 36px;
+        font-size: 22px;
     }
 }

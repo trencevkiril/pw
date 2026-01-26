@@ -15,7 +15,8 @@ export default function GalleryPage() {
         url="/gallery"
       />
       <section>
-        <h1 className="page-header">{t("paragraph4")}</h1>
+        <h1 className="page-header-gallery">{t("paragraph4")}</h1>
+        <h1 className="page-header-gallery-2">{t("paragraph5")}</h1>
       </section>
       <Pics />
     </div>

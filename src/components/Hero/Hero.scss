@@ -9,6 +9,15 @@
     padding-bottom: 20px;
     background-repeat: no-repeat;
     position: relative;
+    opacity: 85%;
+    overflow: visible;
+
+    .header-container {
+        // position: sticky;
+        // top: 0;
+        // z-index: 1002;
+        // background: #fff;
+    }
 
     &::before {
         content: "";

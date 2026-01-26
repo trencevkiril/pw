@@ -1,10 +1,8 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useEvents } from "../../context/EventsContext";
-import "./Events.scss";
-import { useTranslation } from "react-i18next";
 import { formatDate, getDayName } from "../../utils/dateUtils";
-import Button from "../Button/Button";
+import "./Events.scss";
 
 export default function Events({ limit, showMoreButton = false }) {
   const { events, loading, error } = useEvents();
@@ -24,7 +22,8 @@ export default function Events({ limit, showMoreButton = false }) {
           <p>No events available</p>
         ) : (
           displayedEvents.map((event) => {
-            const isBooked = event.status === 'BOOKED';
+            let isBooked = event.status === 'BOOKED';
+            // isBooked = true;
             const eventContent = (
               <>
                 <div className="date">{formatDate(event.date)}</div>
@@ -32,7 +31,7 @@ export default function Events({ limit, showMoreButton = false }) {
                   <span>{getDayName(event.date, i18n.language, t).toUpperCase()}</span>
                   <div>
                     <span>{event.startTime}</span>
-                    <span>-</span>
+                    <span> - </span>
                     <span>{event.endTime}</span>
                   </div>
                 </div>
@@ -71,7 +70,11 @@ export default function Events({ limit, showMoreButton = false }) {
       {showMoreButton && events.length > limit && (
         <div className="see-more-container">
           <Link to="/events" onClick={() => window.scrollTo(0, 0)}>
-            <Button title={t("see-more-events")} />
+            {/* <Button title={t("see-more-events")} /> */}
+
+            <button className="see-more-button">
+              {t("see-more-events")}
+            </button>
           </Link>
         </div>
       )}

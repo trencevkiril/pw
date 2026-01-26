@@ -45,8 +45,6 @@ export function EventsProvider({ children }) {
 
         // Sort events: FREE first (by date), then BOOKED last (by date)
         const sortedEvents = transformedEvents.sort((a, b) => {
-          if (a.status === 'BOOKED' && b.status !== 'BOOKED') return 1;
-          if (a.status !== 'BOOKED' && b.status === 'BOOKED') return -1;
           return new Date(a.date) - new Date(b.date);
         });
 

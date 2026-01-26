@@ -1,7 +1,7 @@
 import React from "react";
-import turtlesPic from "../../images/turtles.webp";
-import winePic from "../../images/wine.webp";
-import facePic from "../../images/face.webp";
+import wineDrinkPic from "../../images/homePage/drinkWine.jpeg";
+import paintPic from "../../images/homePage/paint.png";
+import couplePic from "../../images/homePage/couplePaint.png";
 import "./HomePage.scss";
 import { useTranslation } from "react-i18next";
 import Events from "../../components/Events/Events";
@@ -19,13 +19,14 @@ export default function HomePage() {
         structuredData={organizationSchema}
       />
       <section className="picture-section-container">
-        <img src={turtlesPic} className="picture-section" alt="turtlesPic" loading="lazy" />
-        <img src={winePic} className="picture-section" alt="winePic" loading="lazy" />
-        <img src={facePic} className="picture-section" alt="facePic" loading="lazy" />
+        <img src={wineDrinkPic} className="picture-section" alt="turtlesPic" loading="lazy" />
+        <img src={couplePic} className="picture-section" alt="facePic" loading="lazy" />
+        <img src={paintPic} className="picture-section" alt="winePic" loading="lazy" />
       </section>
       <section className="text-header">
         <div className="picture-section-header">
-          {t("picture-section-header")}
+          <div>{t("picture-section-header")}</div>
+          <div>{t("picture-section-header-2")}</div>
         </div>
         <div className="paragraphs">
           <p>{t("paragraph1")}</p>
