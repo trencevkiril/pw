@@ -10,6 +10,7 @@ export default function Header() {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState(i18n.language);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,6 +26,23 @@ export default function Header() {
     };
   }, [i18n]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('.hero-container');
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        if (window.scrollY > heroHeight) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const toggleLanguage = () => {
     const newLang = currentLang === "en" ? "mk" : "en";
     i18n.changeLanguage(newLang);
@@ -35,7 +53,7 @@ export default function Header() {
   };
 
   return (
-    <header className="header-container">
+    <header className={`header-container ${isScrolled ? "scrolled" : ""}`}>
       <Link to="/" className="logo-container" onClick={handleLogoClick}>
         <img src={logo} alt="logo" className="logo" />
       </Link>

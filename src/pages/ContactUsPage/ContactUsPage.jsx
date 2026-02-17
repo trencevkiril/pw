@@ -1,535 +1,340 @@
 import { useState } from "react";
-import { TextField, Button, Box, ToggleButton, ToggleButtonGroup, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Alert } from "@mui/material";
+import {
+  Box, ToggleButton, ToggleButtonGroup,
+  Radio, RadioGroup, FormControlLabel, FormControl,
+  FormLabel, Alert, Paper, Typography, TextField
+} from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import "./ContactUsPage.scss";
 import SEO from "../../components/SEO/SEO";
+import Button from "../../components/Button/Button";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+
+const NAVY      = "#003366";
+const RED       = "#a8392f";
+const RED_LIGHT = "#fdf1f0";
+const GREY      = "#f5f5f5";
+const GREY_MID  = "#e0e0e0";
+
+const fieldSx = {
+  "& .MuiInputBase-input":            { fontSize: { xs: "16px", sm: "18px" } },
+  "& .MuiInputLabel-root":            { fontSize: { xs: "16px", sm: "18px" } },
+  "& .MuiInput-underline:after":      { borderBottomColor: RED },
+  "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: RED },
+  "& .MuiInputLabel-root.Mui-focused":{ color: RED },
+};
+
+const outlinedFieldSx = {
+  ...fieldSx,
+  "& .MuiOutlinedInput-root": {
+    "&:hover fieldset":       { borderColor: RED },
+    "&.Mui-focused fieldset": { borderColor: RED },
+  },
+};
 
 export default function ContactUsPage() {
   const { t } = useTranslation();
-  const [formType, setFormType] = useState("private"); // "contact" or "private"
+  const [formType, setFormType]       = useState("private");
   const [showSuccess, setShowSuccess] = useState(false);
 
   const [contactFormData, setContactFormData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    message: "",
+    name: "", email: "", number: "", message: "",
   });
 
   const [privateFormData, setPrivateFormData] = useState({
-    dateFrom: "",
-    dateTo: "",
-    timeFrom: "",
-    timeTo: "",
-    guests: "",
-    phone: "",
-    email: "",
-    requirements: "",
-    catering: "no",
+    dateFrom: null, dateTo: null,
+    timeFrom: null, timeTo: null,
+    guests: "", phone: "", email: "", requirements: "", catering: "no",
   });
 
-  const handleFormTypeChange = (event, newFormType) => {
-    if (newFormType !== null) {
-      setFormType(newFormType);
-    }
+  const handleFormTypeChange = (_, newType) => {
+    if (newType !== null) setFormType(newType);
   };
 
-  const handleContactFormChange = (e) => {
+  const handleContactChange = (e) => {
     const { name, value } = e.target;
-    setContactFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setContactFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePrivateFormChange = (e) => {
+  const handlePrivateChange = (e) => {
     const { name, value } = e.target;
-    setPrivateFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setPrivateFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create a new FormData object from the form itself
-    const formData = new FormData(e.target);
+    // Build payload manually since date pickers aren't native inputs
+    const payload = formType === "contact"
+      ? { ...contactFormData }
+      : {
+          ...privateFormData,
+          dateFrom: privateFormData.dateFrom ? dayjs(privateFormData.dateFrom).format("DD.MM.YYYY") : "",
+          dateTo:   privateFormData.dateTo   ? dayjs(privateFormData.dateTo).format("DD.MM.YYYY")   : "",
+          timeFrom: privateFormData.timeFrom ? dayjs(privateFormData.timeFrom).format("HH:mm")       : "",
+          timeTo:   privateFormData.timeTo   ? dayjs(privateFormData.timeTo).format("HH:mm")         : "",
+        };
 
-    // Append the access key, form type, and custom subject
-    formData.append("access_key", "56ed0f1d-9644-46b8-9dcd-4bed2f75b8b7");
+    payload.access_key = "56ed0f1d-9644-46b8-9dcd-4bed2f75b8b7";
+    payload.subject    = formType === "contact"
+      ? "New Contact Form Submission - Paint & Wine"
+      : "New Private Event Request - Paint & Wine";
+    payload.from_name  = formType === "contact"
+      ? "Paint & Wine Contact Form"
+      : "Paint & Wine Private Event";
 
-    if (formType === "contact") {
-      formData.append("subject", "New Contact Form Submission - Paint & Wine");
-      formData.append("from_name", "Paint & Wine Contact Form");
-    } else {
-      formData.append("subject", "New Private Event Request - Paint & Wine");
-      formData.append("from_name", "Paint & Wine Private Event");
-    }
-
-    // Convert the FormData object to a regular object
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    // Submit the form data
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    }).then((res) => res.json());
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    }).then((r) => r.json());
 
     if (res.success) {
-      console.log("Success", res);
-
-      // Show success message
       setShowSuccess(true);
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 5000);
-
-      // Reset the appropriate form
+      setTimeout(() => setShowSuccess(false), 5000);
       if (formType === "contact") {
         setContactFormData({ name: "", email: "", number: "", message: "" });
       } else {
         setPrivateFormData({
-          dateFrom: "",
-          dateTo: "",
-          timeFrom: "",
-          timeTo: "",
-          guests: "",
-          phone: "",
-          email: "",
-          requirements: "",
-          catering: "no",
+          dateFrom: null, dateTo: null,
+          timeFrom: null, timeTo: null,
+          guests: "", phone: "", email: "", requirements: "", catering: "no",
         });
       }
     }
   };
 
-
   return (
-      <Box sx={{ maxWidth: "900px", margin: "auto", padding: 3 }}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Box sx={{ maxWidth: "900px", margin: "auto", padding: { xs: 2, sm: 3 } }}>
         <SEO
           title="Contact Us"
-          description="Contact Paint & Wine Skopje for bookings, private events, and inquiries. Book your private paint and wine party or get in touch with any questions."
+          description="Contact Paint & Wine Skopje for bookings, private events, and inquiries."
           url="/contact-us"
         />
-        {/* Page Heading */}
-        <h1 style={{marginBottom: "10px"}} className="page-header">
-          {t("contact-page-heading")}
-        </h1>
 
-        {/* Success Message */}
+        <h1 className="page-header">{t("contact-page-heading")}</h1>
+
         {showSuccess && (
-          <Alert
-            severity="success"
-            sx={{
-              marginBottom: 3,
-              fontSize: { xs: "14px", sm: "18px" },
-              "& .MuiAlert-icon": {
-                fontSize: { xs: "20px", sm: "24px" },
-              },
-            }}
-          >
+          <Alert severity="success" sx={{ marginBottom: 3, fontSize: { xs: "14px", sm: "18px" } }}>
             {t("form-success-message")}
           </Alert>
         )}
 
-        {/* Toggle Switch */}
+        {/* ── Toggle ───────────────────────────────────────────────────────── */}
         <ToggleButtonGroup
-          value={formType}
-          exclusive
-          onChange={handleFormTypeChange}
-          sx={{
-            width: "100%",
-            marginBottom: 3,
-            display: "flex",
-            justifyContent: "center",
-          }}
+          value={formType} exclusive onChange={handleFormTypeChange}
+          sx={{ width: "100%", marginBottom: 3, display: "flex" }}
         >
-          <ToggleButton
-            value="contact"
-            sx={{
-              flex: 1,
-              fontSize: { xs: "14px", sm: "18px" },
-              padding: { xs: "8px", sm: "12px" },
-              backgroundColor: formType === "contact" ? "#FF6F61" : "white",
-              color: formType === "contact" ? "white" : "#FF6F61",
-              "&:hover": {
-                backgroundColor: formType === "contact" ? "#e65a50" : "#ffe5e3",
-              },
-              "&.Mui-selected": {
-                backgroundColor: "#FF6F61",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "#e65a50",
+          {[
+            { value: "contact", label: t("form-toggle-contact") },
+            { value: "private", label: t("form-toggle-private") },
+          ].map(({ value, label }) => (
+            <ToggleButton
+              key={value} value={value}
+              sx={{
+                flex: 1,
+                fontSize: { xs: "14px", sm: "17px" },
+                fontWeight: 600,
+                padding: { xs: "10px", sm: "12px" },
+                border: `1px solid ${GREY_MID}`,
+                color: NAVY,
+                backgroundColor: GREY,
+                textTransform: "none",
+                transition: "all 0.2s ease",
+                "&:hover": { backgroundColor: RED_LIGHT, borderColor: RED },
+                "&.Mui-selected": {
+                  backgroundColor: RED, color: "white", borderColor: RED,
+                  "&:hover": { backgroundColor: "#922f26" },
                 },
-              },
-            }}
-          >
-            {t("form-toggle-contact")}
-          </ToggleButton>
-          <ToggleButton
-            value="private"
-            sx={{
-              flex: 1,
-              fontSize: { xs: "14px", sm: "18px" },
-              padding: { xs: "8px", sm: "12px" },
-              backgroundColor: formType === "private" ? "#FF6F61" : "white",
-              color: formType === "private" ? "white" : "#FF6F61",
-              "&:hover": {
-                backgroundColor: formType === "private" ? "#e65a50" : "#ffe5e3",
-              },
-              "&.Mui-selected": {
-                backgroundColor: "#FF6F61",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "#e65a50",
-                },
-              },
-            }}
-          >
-            {t("form-toggle-private")}
-          </ToggleButton>
+              }}
+            >
+              {label}
+            </ToggleButton>
+          ))}
         </ToggleButtonGroup>
 
-        {/* Contact Form */}
+        {/* ── Contact Form ─────────────────────────────────────────────────── */}
         {formType === "contact" && (
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
+          <Paper
+            component="form" onSubmit={handleSubmit} elevation={0}
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              padding: 3,
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+              display: "flex", flexDirection: "column", gap: 3,
+              padding: { xs: 2, sm: 4 },
+              border: `1px solid ${GREY_MID}`,
+              borderRadius: "12px",
+              backgroundColor: GREY,
             }}
           >
-            <TextField
-              label={t("contact-form-name")}
-              name="name"
-              value={contactFormData.name}
-              variant="standard"
-              onChange={handleContactFormChange}
-              fullWidth
-              required
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
-            />
-
-            <TextField
-              label={t("contact-form-email")}
-              name="email"
-              value={contactFormData.email}
-              variant="standard"
-              onChange={handleContactFormChange}
-              type="email"
-              fullWidth
-              required
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
-            />
-
-            <TextField
-              label={t("contact-form-number")}
-              name="number"
-              value={contactFormData.number}
-              variant="standard"
-              onChange={handleContactFormChange}
-              type="tel"
-              fullWidth
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
-            />
+            {[
+              { label: t("contact-form-name"),   name: "name",   type: "text",  required: true,  value: contactFormData.name   },
+              { label: t("contact-form-email"),  name: "email",  type: "email", required: true,  value: contactFormData.email  },
+              { label: t("contact-form-number"), name: "number", type: "tel",   required: false, value: contactFormData.number },
+            ].map(({ label, name, type, required, value }) => (
+              <TextField
+                key={name}
+                label={label} name={name} value={value} type={type}
+                variant="standard" fullWidth required={required}
+                onChange={handleContactChange}
+                sx={fieldSx}
+              />
+            ))}
 
             <TextField
               label={t("contact-form-message")}
-              name="message"
-              value={contactFormData.message}
-              variant="standard"
-              onChange={handleContactFormChange}
-              multiline
-              rows={4}
-              fullWidth
-              required
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
+              name="message" value={contactFormData.message}
+              variant="outlined" multiline rows={4} fullWidth required
+              onChange={handleContactChange}
+              sx={outlinedFieldSx}
             />
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{
-                backgroundColor: "#FF6F61",
-                "&:hover": { backgroundColor: "#e65a50" },
-                fontSize: { xs: "16px", sm: "22px" },
-              }}
-            >
-              {t("contact-form-submit")}
-            </Button>
-          </Box>
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <Button title={t("contact-form-submit")} type="submit" />
+            </Box>
+          </Paper>
         )}
 
-        {/* Private Event Form */}
+        {/* ── Private Event Form ───────────────────────────────────────────── */}
         {formType === "private" && (
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
+          <Paper
+            component="form" onSubmit={handleSubmit} elevation={0}
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              padding: 3,
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+              display: "flex", flexDirection: "column", gap: 3,
+              padding: { xs: 2, sm: 4 },
+              border: `1px solid ${GREY_MID}`,
+              borderRadius: "12px",
+              backgroundColor: GREY,
             }}
           >
-            {/* Date Range */}
+            {/* Min guests note */}
+            <Box
+              sx={{
+                display: "flex", alignItems: "flex-start", gap: 1.5,
+                padding: "14px 18px",
+                backgroundColor: RED_LIGHT,
+                border: `1px solid ${RED}`,
+                borderRadius: "8px",
+              }}
+            >
+              <InfoOutlinedIcon sx={{ color: RED, mt: "2px", flexShrink: 0 }} />
+              <Typography sx={{ color: RED, fontSize: { xs: "14px", sm: "16px" }, fontWeight: 500, lineHeight: 1.5 }}>
+                {t("private-event-min-guests-note")}
+              </Typography>
+            </Box>
+
+            {/* Date range */}
             <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" } }}>
-              <TextField
+              <DatePicker
                 label={t("private-event-date-from")}
-                name="dateFrom"
                 value={privateFormData.dateFrom}
-                variant="standard"
-                onChange={handlePrivateFormChange}
-                type="date"
-                fullWidth
-                required
-                InputLabelProps={{ shrink: true }}
-                sx={{
-                  "& .MuiInputBase-input": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                }}
+                minDate={dayjs()}
+                onChange={(val) =>
+                  setPrivateFormData((prev) => ({
+                    ...prev,
+                    dateFrom: val,
+                    // clear dateTo if it's now before the new dateFrom
+                    dateTo: prev.dateTo && dayjs(prev.dateTo).isBefore(val) ? null : prev.dateTo,
+                  }))
+                }
+                slotProps={{ textField: { fullWidth: true, required: true, sx: outlinedFieldSx } }}
               />
-              <TextField
+              <DatePicker
                 label={t("private-event-date-to")}
-                name="dateTo"
                 value={privateFormData.dateTo}
-                variant="standard"
-                onChange={handlePrivateFormChange}
-                type="date"
-                fullWidth
-                required
-                InputLabelProps={{ shrink: true }}
-                sx={{
-                  "& .MuiInputBase-input": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                }}
+                minDate={privateFormData.dateFrom ? dayjs(privateFormData.dateFrom) : dayjs()}
+                onChange={(val) =>
+                  setPrivateFormData((prev) => ({ ...prev, dateTo: val }))
+                }
+                slotProps={{ textField: { fullWidth: true, required: true, sx: outlinedFieldSx } }}
               />
             </Box>
 
-            {/* Time Range */}
+            {/* Time range */}
             <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" } }}>
-              <TextField
+              <TimePicker
                 label={t("private-event-time-from")}
-                name="timeFrom"
                 value={privateFormData.timeFrom}
-                variant="standard"
-                onChange={handlePrivateFormChange}
-                type="time"
-                fullWidth
-                required
-                InputLabelProps={{ shrink: true }}
-                sx={{
-                  "& .MuiInputBase-input": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                }}
+                ampm={false}
+                onChange={(val) =>
+                  setPrivateFormData((prev) => ({ ...prev, timeFrom: val }))
+                }
+                slotProps={{ textField: { fullWidth: true, required: true, sx: outlinedFieldSx } }}
               />
-              <TextField
+              <TimePicker
                 label={t("private-event-time-to")}
-                name="timeTo"
                 value={privateFormData.timeTo}
-                variant="standard"
-                onChange={handlePrivateFormChange}
-                type="time"
-                fullWidth
-                required
-                InputLabelProps={{ shrink: true }}
-                sx={{
-                  "& .MuiInputBase-input": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontSize: { xs: "16px", sm: "20px" },
-                  },
-                }}
+                ampm={false}
+                minTime={privateFormData.timeFrom ? dayjs(privateFormData.timeFrom) : undefined}
+                onChange={(val) =>
+                  setPrivateFormData((prev) => ({ ...prev, timeTo: val }))
+                }
+                slotProps={{ textField: { fullWidth: true, required: true, sx: outlinedFieldSx } }}
               />
             </Box>
 
-            {/* Number of Guests */}
-            <TextField
-              label={t("private-event-guests")}
-              name="guests"
-              value={privateFormData.guests}
-              variant="standard"
-              onChange={handlePrivateFormChange}
-              type="number"
-              fullWidth
-              required
-              inputProps={{ min: 1 }}
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
-            />
+            {/* Guests, phone, email */}
+            {[
+              { label: t("private-event-guests"), name: "guests", type: "number", inputProps: { min: 15 }, value: privateFormData.guests },
+              { label: t("private-event-phone"),  name: "phone",  type: "tel",    inputProps: {},         value: privateFormData.phone  },
+              { label: t("private-event-email"),  name: "email",  type: "email",  inputProps: {},         value: privateFormData.email  },
+            ].map(({ label, name, type, inputProps, value }) => (
+              <TextField
+                key={name}
+                label={label} name={name} value={value} type={type}
+                variant="standard" fullWidth required
+                onChange={handlePrivateChange}
+                inputProps={inputProps}
+                sx={fieldSx}
+              />
+            ))}
 
-            {/* Contact Number */}
-            <TextField
-              label={t("private-event-phone")}
-              name="phone"
-              value={privateFormData.phone}
-              variant="standard"
-              onChange={handlePrivateFormChange}
-              type="tel"
-              fullWidth
-              required
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
-            />
-
-            {/* Contact Email */}
-            <TextField
-              label={t("private-event-email")}
-              name="email"
-              value={privateFormData.email}
-              variant="standard"
-              onChange={handlePrivateFormChange}
-              type="email"
-              fullWidth
-              required
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
-            />
-
-            {/* Special Requirements */}
+            {/* Special requirements */}
             <TextField
               label={t("private-event-requirements")}
-              name="requirements"
-              value={privateFormData.requirements}
-              variant="standard"
-              onChange={handlePrivateFormChange}
-              multiline
-              rows={3}
-              fullWidth
-              sx={{
-                "& .MuiInputBase-input": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: { xs: "16px", sm: "24px" },
-                },
-              }}
+              name="requirements" value={privateFormData.requirements}
+              variant="outlined" multiline rows={3} fullWidth
+              onChange={handlePrivateChange}
+              sx={outlinedFieldSx}
             />
 
-            {/* Catering Radio Buttons */}
+            {/* Catering */}
             <FormControl component="fieldset">
               <FormLabel
                 component="legend"
                 sx={{
-                  fontSize: { xs: "16px", sm: "24px" },
-                  color: "#FF6F61",
-                  "&.Mui-focused": { color: "#FF6F61" },
+                  fontSize: { xs: "16px", sm: "18px" },
+                  color: NAVY, fontWeight: 600,
+                  "&.Mui-focused": { color: RED },
                 }}
               >
                 {t("private-event-catering")}
               </FormLabel>
               <RadioGroup
-                name="catering"
-                value={privateFormData.catering}
-                onChange={handlePrivateFormChange}
-                row
+                name="catering" value={privateFormData.catering}
+                onChange={handlePrivateChange} row
               >
-                <FormControlLabel
-                  value="yes"
-                  control={<Radio sx={{ color: "#FF6F61", "&.Mui-checked": { color: "#FF6F61" } }} />}
-                  label={t("private-event-catering-yes")}
-                  sx={{ "& .MuiFormControlLabel-label": { fontSize: { xs: "16px", sm: "20px" } } }}
-                />
-                <FormControlLabel
-                  value="no"
-                  control={<Radio sx={{ color: "#FF6F61", "&.Mui-checked": { color: "#FF6F61" } }} />}
-                  label={t("private-event-catering-no")}
-                  sx={{ "& .MuiFormControlLabel-label": { fontSize: { xs: "16px", sm: "20px" } } }}
-                />
+                {["yes", "no"].map((val) => (
+                  <FormControlLabel
+                    key={val} value={val}
+                    control={<Radio sx={{ color: RED, "&.Mui-checked": { color: RED } }} />}
+                    label={t(`private-event-catering-${val}`)}
+                    sx={{ "& .MuiFormControlLabel-label": { fontSize: { xs: "16px", sm: "18px" } } }}
+                  />
+                ))}
               </RadioGroup>
             </FormControl>
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{
-                backgroundColor: "#FF6F61",
-                "&:hover": { backgroundColor: "#e65a50" },
-                fontSize: { xs: "16px", sm: "22px" },
-              }}
-            >
-              {t("contact-form-submit")}
-            </Button>
-          </Box>
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <Button title={t("contact-form-submit")} type="submit" />
+            </Box>
+          </Paper>
         )}
       </Box>
+    </LocalizationProvider>
   );
 }

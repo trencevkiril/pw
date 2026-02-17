@@ -15,16 +15,19 @@ import SEO, { createEventSchema } from "../../components/SEO/SEO";
 export default function EventDetail() {
   const { id } = useParams();
   const { events } = useEvents();
-  const event = events.find((event) => event.id === id);
+  const event = events.find((e) => e.id === id);
   const { t } = useTranslation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+  useEffect(() => { window.scrollTo(0, 0); }, [id]);
 
-  if (!event) {
-    return <div>Event not found</div>;
-  }
+  if (!event) return <div className="event-not-found">Event not found</div>;
+
+  const details = [
+    { icon: <CalendarMonthIcon />,   label: t("date-label"),  value: formatDate(event.date),                  wide: false },
+    { icon: <AccessTimeIcon />,      label: t("time"),        value: `${event.startTime} – ${event.endTime}`, wide: true  },
+    { icon: <CreditCardIcon />,      label: t("price-label"), value: `${event.price} ${t("currency")}`,       wide: false },
+    { icon: <FmdGoodOutlinedIcon />, label: t("city-label"),  value: t("city"),                               wide: false },
+  ];
 
   return (
     <>
@@ -36,58 +39,29 @@ export default function EventDetail() {
         type="event"
         structuredData={createEventSchema(event)}
       />
+
       <section className="event-container">
         <div className="event-image-container">
-          <h1 className="event-image-title">{event.pictureName}</h1>
-          <img
-            className="event-image"
-            src={event.media}
-            alt={event.pictureName}
-          />
+          <img className="event-image" src={event.media} alt={event.pictureName} />
         </div>
+
         <div className="event-details-wrapper">
+          <h1 className="event-image-title">{event.pictureName}</h1>
+
           <div className="event-details-container">
-            <div className="event-detail">
-              <p className="event-text">
-                <strong className="event-icontext">
-                  <CalendarMonthIcon />
-                  {t("date-label")}
-                </strong>
-                {formatDate(event.date)}
-              </p>
-            </div>
-            <div className="event-detail event-detail-time">
-              <p className="event-text">
-                <strong className="event-icontext">
-                  <AccessTimeIcon />
-                  {t("time")}
-                </strong>
-                {event.startTime} - {event.endTime}
-              </p>
-            </div>
-            <div className="event-detail">
-              <p className="event-text">
-                <strong className="event-icontext">
-                  <CreditCardIcon />
-                  {t("price-label")}
-                </strong>
-                {event.price} {t("currency")}
-              </p>
-            </div>
-            <div className="event-detail">
-              <p className="event-text">
-                <strong className="event-icontext">
-                  <FmdGoodOutlinedIcon />
-                  {t("city-label")}
-                </strong>
-                {t("city")}
-              </p>
-            </div>
+            {details.map(({ icon, label, value, wide }) => (
+              <div key={label} className={`event-detail${wide ? " event-detail--wide" : ""}`}>
+                <span className="event-detail__icon">{icon}</span>
+                <div className="event-detail__body">
+                  <span className="event-detail__label">{label}</span>
+                  <span className="event-detail__value">{value}</span>
+                </div>
+              </div>
+            ))}
           </div>
+
           <div className="event-reservation-section">
-            <p className="reservation-text">
-              {t("reservation-text")}
-            </p>
+            <p className="reservation-text">{t("reservation-text")}</p>
             <a
               href="https://www.instagram.com/paintandwineskopje/"
               target="_blank"

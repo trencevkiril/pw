@@ -75,16 +75,18 @@ export default function Hero() {
   };
 
   return (
-    <div className={`hero-container ${hideContent ? 'hero-compact' : ''}`}>
+    <>
       <Header />
-      {!hideContent && (
-        <section className="section hero-section">
-          <h1>{heading}</h1>
-          {showButton && (
-            <Button title={buttonText} onClick={handleScrollToEvents} />
-          )}
-        </section>
-      )}
-    </div>
+      <div className={`hero-container ${hideContent ? 'hero-compact' : ''}`}>
+        {!hideContent && (
+          <section className="section hero-section">
+            <h1>{heading}</h1>
+            {showButton && (
+              <Button title={buttonText} onClick={handleScrollToEvents} />
+            )}
+          </section>
+        )}
+      </div>
+    </>
   );
 }
