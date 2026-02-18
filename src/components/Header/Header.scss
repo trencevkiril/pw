@@ -53,11 +53,12 @@
     }
 
     &.scrolled {
-        backdrop-filter: blur(15px);
+        // Remove backdrop-filter from here
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 
         &::before {
             opacity: 0.6;
+            backdrop-filter: blur(15px); // ← move blur to pseudo-element
         }
 
         &::after {
