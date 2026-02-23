@@ -14,4 +14,4 @@ export default function Button({ title, fontSize, onClick, width, type = "button
       {title}
     </div>
   );
-}s
+}
